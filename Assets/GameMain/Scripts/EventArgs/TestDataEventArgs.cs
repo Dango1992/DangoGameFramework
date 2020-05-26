@@ -7,7 +7,7 @@ using Dango.Network;
 
 namespace Dango
 {
-    public class TestDataEventArgs : MsgEventArgs
+    public class TestDataEventArgs : MsgEventArgs<ServerInfo>
     {
         /// <summary>
         /// 接收服务器消息事件编号。
@@ -25,40 +25,18 @@ namespace Dango
         /// <summary>
         /// 获取消息主体
         /// </summary>
-        public override object Body { get; protected set; }
+        public override ServerInfo Body { get; protected set; }
 
-        public override MsgEventArgs Fill(object body)
+        public override MsgEventArgs<ServerInfo> Fill(ServerInfo body)
         {
             this.Body = body;
             return this;
         }
-
-        public override int GetDefine()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override IMessage GetMessage()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override MessageParser GetParser()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void PrcessMsg(IMessage msgCreate)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         public override void Clear()
         {
-            this.Body = null;
+            this.Body.Clear();
         }
-
-        
     }
 }
 

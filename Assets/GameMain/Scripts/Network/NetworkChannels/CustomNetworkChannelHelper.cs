@@ -165,6 +165,7 @@ namespace Dango.Network
                 index += bytes.Length;
             }
             
+            ReferencePool.Release(packet);
             ReferencePool.Release(packetHeader);
             m_CachedStream.WriteTo(destination);
             
@@ -226,8 +227,7 @@ namespace Dango.Network
 
                 if (packetType != null && source is MemoryStream)
                 {
-                    object instance = Activator.CreateInstance(packetType);
-                    packet = (Packet) ProtobufHelper.FromStream(instance, (MemoryStream) source);
+                    packet = (Packet) ProtobufHelper.FromStream(ReferencePool.Acquire(packetType), (MemoryStream) source);
                 }
                 else
                 {
@@ -238,7 +238,7 @@ namespace Dango.Network
             {
                 Log.Warning("Packet header is invalid.");
             }
-
+            
             ReferencePool.Release(header);
             return packet;
         }

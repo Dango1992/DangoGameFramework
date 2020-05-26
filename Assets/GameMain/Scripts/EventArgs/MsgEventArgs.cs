@@ -8,19 +8,14 @@ using Dango.Network;
 
 namespace Dango.Network
 {
-    public abstract class MsgEventArgs : GameEventArgs
+    public abstract class MsgEventArgs<T> : GameEventArgs
     {
-        public virtual object Body { get; protected set; }
+        public virtual T Body { get; protected set; }
 
-        public virtual MsgEventArgs Fill(object body)
+        public virtual MsgEventArgs<T> Fill(T body)
         {
             this.Body = body;
             return this;
         }
-
-        public abstract int GetDefine();
-        public abstract IMessage GetMessage();
-        public abstract MessageParser GetParser();
-        public abstract void PrcessMsg(IMessage msgCreate);
     }
 }

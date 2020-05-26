@@ -65,9 +65,11 @@
     <Compile Include="Assets\GameMain\Scripts\Core\Singleton.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\DataModelComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\DataModelComponent.Data.cs" />
-    <Compile Include="Assets\GameMain\Scripts\DataModel\Datas\TestDataModel.cs" />
+    <Compile Include="Assets\GameMain\Scripts\DataModel\Datas\ServerInfo.cs" />
+    <Compile Include="Assets\GameMain\Scripts\DataModel\Interface\IClear.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\Interface\IDataModel.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\Interface\INotify.cs" />
+    <Compile Include="Assets\GameMain\Scripts\DataModel\Models\TestDataModel.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\BinaryReaderExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DataTableExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DREntity.cs" />
@@ -91,9 +93,9 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\EntityData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Entity.cs" />
-    <Compile Include="Assets\GameMain\Scripts\EventArgs\GSResponseEventArgs.cs" />
     <Compile Include="Assets\GameMain\Scripts\EventArgs\MsgEventArgs.cs" />
     <Compile Include="Assets\GameMain\Scripts\EventArgs\TestDataEventArgs.cs" />
+    <Compile Include="Assets\GameMain\Scripts\EventArgs\TestLoginSuccessfulEventArgs.cs" />
     <Compile Include="Assets\GameMain\Scripts\Localization\LocalizationExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\Localization\XmlLocalizationHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\CSPacketBase.cs" />

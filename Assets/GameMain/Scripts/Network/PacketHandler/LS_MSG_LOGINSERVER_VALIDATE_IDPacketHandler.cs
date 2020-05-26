@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using GameFramework.Network;
 using Dango.Network;
+using GameFramework;
+using LS;
 using UnityEngine;
 
 namespace Dango
@@ -10,7 +12,11 @@ namespace Dango
     {
         public override void Handle(object sender, Packet packet)
         {
-            Debug.Log("Hi");
+            TestDataEventArgs eventArgs = ReferencePool.Acquire<TestDataEventArgs>();
+            var msg = packet as MSG_LOGINSERVER_VALIDATE;
+            
+            eventArgs.Fill(new ServerInfo(){ ip = msg.Ip,prot = msg.Port,checkOutText = msg.CheckOutText.ToStringUtf8()});
+            GameEntry.Event.Fire(this,eventArgs);
         }
 
         public override MsgDefine MessageDefine()
