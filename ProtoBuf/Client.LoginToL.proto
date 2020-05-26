@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+//客户端登录(CLIENT->L)
+
+package Client;
+message MSG_CLIENT_LOGINTOL
+{
+    int32 Operator = 1;  //<1:Android手Q, 2:Android微信, 3:ios手Q, 4:ios微信
+    int64 UserId = 2;
+    string Token = 3;
+    uint32 Version = 4;
+}

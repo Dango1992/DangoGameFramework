@@ -60,6 +60,7 @@
     <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableGenerator.cs" />
     <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableGeneratorMenu.cs" />
     <Compile Include="Assets\GameMain\Scripts\Editor\GameFrameworkConfigs.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Editor\Proto2CS.cs" />
     <Compile Include="Assets\GameMain\Scripts\Editor\StarForceBuildEventHandler.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Work/MyGit/DangoGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

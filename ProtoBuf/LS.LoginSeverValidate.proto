@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+//客户端登录回复(L->G && L->CLIENT)
+
+package LS;
+message MSG_LOGINSERVER_VALIDATE
+{
+    int32 Port = 1;         //<GameServer 端口
+    int64 UserId = 2;       //<UserID
+    string Ip = 3;          //<GameServer IP
+    bytes CheckOutText = 4; //<校验码
+}

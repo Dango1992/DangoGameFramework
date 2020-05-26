@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+//客户端登录验证失败时返回(L->CLIENT)
+
+package LS;
+message MSG_CLIENT_LOGINTOLRESP
+{
+    int32 ErrorCode = 1; //1验证失败
+    int64 UserId = 2;
+}

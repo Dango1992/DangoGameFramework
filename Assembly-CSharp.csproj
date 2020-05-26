@@ -118,6 +118,7 @@
     <Compile Include="Assets\GameMain\Scripts\Network\PacketHandler\SCHeartBeatHandler.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\PacketHandlerBase.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\PacketHeaderBase.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Network\ProtoGen\ClientBuyItem.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\ProtoGen\ClientLoginToL.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\ProtoGen\LSLoginResp.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\ProtoGen\LSLoginSeverValidate.cs" />

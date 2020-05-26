@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+//客户端购买物品
+package Client;
+
+message MSG_BUY_ITEM
+{
+    int64 UserId = 1;
+    int32 ItemId = 2;
+}
+
+message BUY_ITEM
+{
+    int32 ItemId = 1;
+    int32 Amount = 2;
+}
+
+message MSG_BUY_ITEMS
+{
+    int64 UserId = 1;
+    repeated BUY_ITEM ItemList = 2;
+}
+
+message MSG_BUY_GOODS
+{
+    int64 UserId = 1;
+    int32 StoreId = 2;
+}
