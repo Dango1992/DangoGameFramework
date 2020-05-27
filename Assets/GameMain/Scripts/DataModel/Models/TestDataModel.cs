@@ -8,9 +8,15 @@ using UnityEngine;
 
 namespace Dango
 {
-    public class TestDataModel : UnitSingleton<TestDataModel>,IDataModel
+    public class TestDataModel : DataModelBase
     {
-        public void Clear()
+        public static readonly int EventId = typeof(TestDataModel).GetHashCode();
+        public override int Id
+        {
+            get { return EventId; }
+        }
+
+        public override void Clear()
         {
             ip = string.Empty;
             prot = 0;
@@ -21,17 +27,22 @@ namespace Dango
         private int prot;
         private string checkOutText;
 
-        public void Subscribe()
+        public override void Subscribe()
         {
-            GameEntry.Event.Subscribe(TestDataEventArgs.EventId,OnNotify);
+            GameEntry.Event.Subscribe(TestDataEventArgs.EventId,UpdateData);
         }
 
-        public void Unsubscribe()
+        public override void Unsubscribe()
         {
-            GameEntry.Event.Subscribe(TestDataEventArgs.EventId,OnNotify);
+            GameEntry.Event.Subscribe(TestDataEventArgs.EventId,UpdateData);
         }
 
-        public void OnNotify(object sender, GameEventArgs e)
+        public override void OnNotify(object sender, GameEventArgs e)
+        {
+            //通知所有model
+        }
+
+        private void UpdateData(object sender, GameEventArgs e)
         {
             TestDataEventArgs ne = e as TestDataEventArgs;
             

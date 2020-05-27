@@ -30,10 +30,5 @@ namespace Dango
             Unsubscribe();
             DataClear();
         }
-        
-        private void DataRegister()
-        {
-            Register<TestDataModel>();
-        }
     }
 }

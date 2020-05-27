@@ -130,7 +130,6 @@ namespace Dango.Network
             //            ushort usType;
             //            bool bHasNext;
             //        };
-            
             PacketBase packetImpl = packet as PacketBase;
             if (packetImpl == null)
             {
@@ -165,8 +164,8 @@ namespace Dango.Network
                 index += bytes.Length;
             }
             
-            ReferencePool.Release(packet);
             ReferencePool.Release(packetHeader);
+            ReferencePool.Release(packet);
             m_CachedStream.WriteTo(destination);
             
             return true;
@@ -303,6 +302,8 @@ namespace Dango.Network
         private void OnNetworkError(object sender, GameEventArgs e)
         {
             UnityGameFramework.Runtime.NetworkErrorEventArgs ne = (UnityGameFramework.Runtime.NetworkErrorEventArgs) e;
+            
+            Debug.Log(e.Id);
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
@@ -318,6 +319,7 @@ namespace Dango.Network
         {
             UnityGameFramework.Runtime.NetworkCustomErrorEventArgs ne =
                 (UnityGameFramework.Runtime.NetworkCustomErrorEventArgs) e;
+            
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;

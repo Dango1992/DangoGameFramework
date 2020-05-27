@@ -6,6 +6,7 @@ namespace Dango.Core
 {
     public interface IDataModel : INotify
     {
+        int Id { get; }
         void Clear();
         void Subscribe();
         void Unsubscribe();

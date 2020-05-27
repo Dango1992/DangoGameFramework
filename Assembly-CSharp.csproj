@@ -30,7 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,7 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -63,6 +63,7 @@
     <Compile Include="Assets\GameMain\Scripts\BuiltinData\BuiltinDataComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\Config\ConfigExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\Core\Singleton.cs" />
+    <Compile Include="Assets\GameMain\Scripts\DataModel\DataModelBase.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\DataModelComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\DataModelComponent.Data.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\Datas\ServerInfo.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Assets\GameMain\Scripts\DataModel\Interface\IDataModel.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\Interface\INotify.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataModel\Models\TestDataModel.cs" />
+    <Compile Include="Assets\GameMain\Scripts\DataModel\Models\TestDataModel2.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\BinaryReaderExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DataTableExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DREntity.cs" />
@@ -407,6 +409,15 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Work/MyGit/DangoGameFramework/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="ILRuntime.Mono.Cecil.Pdb">
+      <HintPath>D:/Work/MyGit/DangoGameFramework/Assets/ThirdParty/ILRuntime/Dependencies/ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="ILRuntim.Mono.Cecil">
+      <HintPath>D:/Work/MyGit/DangoGameFramework/Assets/ThirdParty/ILRuntime/Dependencies/ILRuntim.Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="ILRuntime.Mono.Cecil.Mdb">
+      <HintPath>D:/Work/MyGit/DangoGameFramework/Assets/ThirdParty/ILRuntime/Dependencies/ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Program Files/Unitys/2018.3.14/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -762,6 +773,10 @@
     <ProjectReference Include="UnityGameFramework.Editor.csproj">
       <Project>{7C7453AF-A68E-EC11-5768-5F59DFEA669A}</Project>
       <Name>UnityGameFramework.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="ILRuntime.csproj">
+      <Project>{88033A83-C931-2752-3B2E-8F643B8B8E93}</Project>
+      <Name>ILRuntime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
