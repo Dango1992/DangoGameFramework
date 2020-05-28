@@ -19,12 +19,12 @@ namespace Dango
         public override void Clear()
         {
             ip = string.Empty;
-            prot = 0;
+            port = 0;
             checkOutText = string.Empty;
         }
 
         private string ip;
-        private int prot;
+        private int port;
         private string checkOutText;
 
         public override void Subscribe()
@@ -47,7 +47,7 @@ namespace Dango
             TestDataEventArgs ne = e as TestDataEventArgs;
             
             ip = ne.Body.ip;
-            prot = ne.Body.prot;
+            port = ne.Body.port;
             checkOutText = ne.Body.checkOutText;
             
             TestLoginSuccessfulEventArgs eventArgs = ReferencePool.Acquire<TestLoginSuccessfulEventArgs>();

@@ -18,7 +18,8 @@ namespace Dango
 
             base.OnEnter (procedureOwner);
             
-            GameEntry.UI.OpenUIForm(UIFormId.LoginForm, this);
+            //GameEntry.UI.OpenUIForm(UIFormId.LoginForm, this);
+            GameEntry.ILRuntime.Func("HotfixProject.MyClass", "SayHello", null, null);
         }
     }
 }

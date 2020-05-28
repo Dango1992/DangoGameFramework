@@ -18,7 +18,6 @@ namespace Dango
     [AddComponentMenu("Game Framework/DataModel")]
     public partial class DataModelComponent : GameFrameworkComponent
     {
-        
         private void Start()
         {
             DataRegister();

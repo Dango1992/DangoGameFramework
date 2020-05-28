@@ -7,13 +7,13 @@ namespace Dango
     public struct ServerInfo:IClear
     {
         public string ip;
-        public int prot;
+        public int port;
         public string checkOutText;
         
         public void Clear()
         {
             ip = string.Empty;
-            prot = 0;
+            port = 0;
             checkOutText = string.Empty;
         }
     }

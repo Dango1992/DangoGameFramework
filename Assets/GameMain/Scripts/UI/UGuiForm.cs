@@ -37,12 +37,12 @@ namespace Dango
             }
         }
 
-        public void Close()
+        public virtual void Close()
         {
             Close(false);
         }
 
-        public void Close(bool ignoreFade)
+        public virtual void Close(bool ignoreFade)
         {
             StopAllCoroutines();
 
@@ -56,7 +56,7 @@ namespace Dango
             }
         }
 
-        public void PlayUISound(int uiSoundId)
+        public virtual void PlayUISound(int uiSoundId)
         {
             GameEntry.Sound.PlayUISound(uiSoundId);
         }

@@ -29,22 +29,21 @@ namespace Dango
             get;
             private set;
         }
-
-//        
-//        /// <summary>
-//        /// 获取网络组件。
-//        /// </summary>
-//        public static NetworkManager Network
-//        {
-//            get;
-//            private set;
-//        }
+        
+        /// <summary>
+        /// 获取ILRuntime组件。
+        /// </summary>
+        public static ILRuntimeComponent ILRuntime
+        {
+            get;
+            private set;
+        }
 
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
             DataModel = UnityGameFramework.Runtime.GameEntry.GetComponent<DataModelComponent>();
-            //Network = UnityGameFramework.Runtime.GameEntry.GetComponent<NetworkManager>();
+            ILRuntime = UnityGameFramework.Runtime.GameEntry.GetComponent<ILRuntimeComponent>();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Dango
             TestDataEventArgs eventArgs = ReferencePool.Acquire<TestDataEventArgs>();
             var msg = packet as MSG_LOGINSERVER_VALIDATE;
             
-            eventArgs.Fill(new ServerInfo(){ ip = msg.Ip,prot = msg.Port,checkOutText = msg.CheckOutText.ToStringUtf8()});
+            eventArgs.Fill(new ServerInfo(){ ip = msg.Ip,port = msg.Port,checkOutText = msg.CheckOutText.ToStringUtf8()});
             GameEntry.Event.Fire(this,eventArgs);
         }
 
