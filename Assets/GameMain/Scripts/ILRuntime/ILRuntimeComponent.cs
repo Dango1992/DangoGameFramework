@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using ILRuntime.CLR.Method;
+using ILRuntime.CLR.TypeSystem;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -62,8 +64,21 @@ public class ILRuntimeComponent : GameFrameworkComponent
         appdomain.LoadAssembly(fs, p, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
     }
 
-    public void Func(string type, string method, object instance, params object[] p)
+    public void Invoke(string type, string method, object instance, params object[] p)
     {
         appdomain?.Invoke(type, method, p);
+    }
+    
+    public object Instantiate(string typeFullName, params object[] args)
+    {
+        return appdomain.Instantiate(typeFullName, args);
+    }
+
+    public void Execute(object instance,string typeFullName,string methodName, int paramCount ,params object[] paras)
+    {
+        IType type = appdomain.LoadedTypes[typeFullName];
+        
+        IMethod method = type.GetMethod(methodName, paramCount);
+        appdomain.Invoke(method, instance, paras);
     }
 }

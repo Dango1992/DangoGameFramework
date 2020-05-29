@@ -20,5 +20,6 @@ namespace Dango
         DialogForm = 1,
 
         LoginForm = 100,
+        TestForm = 101,
     }
 }

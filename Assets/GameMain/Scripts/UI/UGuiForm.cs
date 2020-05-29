@@ -37,7 +37,7 @@ namespace Dango
             }
         }
 
-        public virtual void Close()
+        public void Close()
         {
             Close(false);
         }
@@ -56,7 +56,7 @@ namespace Dango
             }
         }
 
-        public virtual void PlayUISound(int uiSoundId)
+        public void PlayUISound(int uiSoundId)
         {
             GameEntry.Sound.PlayUISound(uiSoundId);
         }
