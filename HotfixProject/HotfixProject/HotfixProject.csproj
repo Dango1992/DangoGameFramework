@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HotFix\MyClass.cs" />
+    <Compile Include="HotFix\UI\Attribute\BindComponentAttribute.cs" />
     <Compile Include="HotFix\UI\HotFixForm.cs" />
     <Compile Include="HotFix\UI\Interface\IHotFixForm.cs" />
     <Compile Include="HotFix\UI\TestForm.cs" />

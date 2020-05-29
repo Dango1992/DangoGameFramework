@@ -18,16 +18,22 @@ namespace Dango.HotFix
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown,userData);
+            
+            GameEntry.ILRuntime.ExecuteMethod(classInstance,"OnClose",2,isShutdown,userData);
         }
 
         protected override void OnCover()
         {
             base.OnCover();
+            
+            GameEntry.ILRuntime.ExecuteMethod(classInstance,"OnCover",0);
         }
 
         protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
         {
             base.OnDepthChanged(uiGroupDepth,depthInUIGroup);
+            
+            GameEntry.ILRuntime.ExecuteMethod(classInstance,"OnDepthChanged",2,uiGroupDepth,depthInUIGroup);
         }
 
         protected override void OnInit(object userData)
@@ -93,6 +99,8 @@ namespace Dango.HotFix
             {
                 ReferencePool.Release(classInstance);
             }
+
+            classInstance = null;
         }
     }
 }

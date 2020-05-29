@@ -91,6 +91,11 @@ namespace Dango
         public void ExecuteMethod(ILClassInstance classInstance, string methodName, int paramCount,
             params object[] paras)
         {
+            if (classInstance.classInstance == null || classInstance.type == null)
+            {
+                return;
+            }
+            
             IMethod method = classInstance.type.GetMethod(methodName, paramCount);
             appdomain.Invoke(method, classInstance.classInstance, paras);
         }
