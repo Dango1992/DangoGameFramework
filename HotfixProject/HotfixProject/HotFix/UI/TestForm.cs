@@ -60,7 +60,7 @@ namespace HotfixProject.HotFix.UI
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-
+            Debug.Log("time elapsed:" + elapseSeconds);
         }
     }
 }

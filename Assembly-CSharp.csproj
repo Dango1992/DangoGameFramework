@@ -102,6 +102,7 @@
     <Compile Include="Assets\GameMain\Scripts\EventArgs\MsgEventArgs.cs" />
     <Compile Include="Assets\GameMain\Scripts\EventArgs\TestDataEventArgs.cs" />
     <Compile Include="Assets\GameMain\Scripts\EventArgs\TestLoginSuccessfulEventArgs.cs" />
+    <Compile Include="Assets\GameMain\Scripts\ILRuntime\ILClassInstance.cs" />
     <Compile Include="Assets\GameMain\Scripts\ILRuntime\ILRuntimeComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\Localization\LocalizationExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\Localization\XmlLocalizationHelper.cs" />

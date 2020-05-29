@@ -2,83 +2,97 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using GameFramework;
 using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-/// <summary>
-/// 基础组件。
-/// </summary>
-[DisallowMultipleComponent]
-[AddComponentMenu("Game Framework/ILRuntime")]
-public class ILRuntimeComponent : GameFrameworkComponent
+namespace Dango
 {
-    ILRuntime.Runtime.Enviorment.AppDomain appdomain;
-    
-    System.IO.MemoryStream fs;
-    System.IO.MemoryStream p;
-
-    private void Start()
+    /// <summary>
+    /// 基础组件。
+    /// </summary>
+    [DisallowMultipleComponent]
+    [AddComponentMenu("Game Framework/ILRuntime")]
+    public class ILRuntimeComponent : GameFrameworkComponent
     {
-        StartCoroutine(LoadILRuntime());
-    }
+        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
 
-    private void OnDestroy()
-    {
-        if (fs != null)
-            fs.Close();
-        if (p != null)
-            p.Close();
-        fs = null;
-        p = null;
-    }
+        System.IO.MemoryStream fs;
+        System.IO.MemoryStream p;
 
-    IEnumerator LoadILRuntime()
-    {
-        appdomain = new ILRuntime.Runtime.Enviorment.AppDomain();
+        private void Start()
+        {
+            StartCoroutine(LoadILRuntime());
+        }
+
+        private void OnDestroy()
+        {
+            if (fs != null)
+                fs.Close();
+            if (p != null)
+                p.Close();
+            fs = null;
+            p = null;
+        }
+
+        IEnumerator LoadILRuntime()
+        {
+            appdomain = new ILRuntime.Runtime.Enviorment.AppDomain();
 #if UNITY_ANDROID
     WWW www = new WWW(Application.streamingAssetsPath + "/HotfixProject.dll");
 #else
-        WWW www = new WWW("file:///" + Application.streamingAssetsPath + "/HotfixProject.dll");
+            WWW www = new WWW("file:///" + Application.streamingAssetsPath + "/HotfixProject.dll");
 #endif
-        while (!www.isDone)
-            yield return null;
-        if (!string.IsNullOrEmpty(www.error))
-            Debug.LogError(www.error);
-        byte[] dll = www.bytes;
-        www.Dispose();
+            while (!www.isDone)
+                yield return null;
+            if (!string.IsNullOrEmpty(www.error))
+                Debug.LogError(www.error);
+            byte[] dll = www.bytes;
+            www.Dispose();
 #if UNITY_ANDROID
     www = new WWW(Application.streamingAssetsPath + "/HotfixProject.pdb");
 #else
-        www = new WWW("file:///" + Application.streamingAssetsPath + "/HotfixProject.pdb");
+            www = new WWW("file:///" + Application.streamingAssetsPath + "/HotfixProject.pdb");
 #endif
-        while (!www.isDone)
-            yield return null;
-        if (!string.IsNullOrEmpty(www.error))
-            Debug.LogError(www.error);
-        byte[] pdb = www.bytes;
-        fs = new MemoryStream(dll);
-        p = new MemoryStream(pdb);
-        
-        appdomain.LoadAssembly(fs, p, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
-    }
+            while (!www.isDone)
+                yield return null;
+            if (!string.IsNullOrEmpty(www.error))
+                Debug.LogError(www.error);
+            byte[] pdb = www.bytes;
+            fs = new MemoryStream(dll);
+            p = new MemoryStream(pdb);
 
-    public void Invoke(string type, string method, object instance, params object[] p)
-    {
-        appdomain?.Invoke(type, method, p);
-    }
-    
-    public object Instantiate(string typeFullName, params object[] args)
-    {
-        return appdomain.Instantiate(typeFullName, args);
-    }
+            appdomain.LoadAssembly(fs, p, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+        }
 
-    public void Execute(object instance,string typeFullName,string methodName, int paramCount ,params object[] paras)
-    {
-        IType type = appdomain.LoadedTypes[typeFullName];
+        public void Invoke(string type, string method, object instance, params object[] p)
+        {
+            appdomain?.Invoke(type, method, p);
+        }
         
-        IMethod method = type.GetMethod(methodName, paramCount);
-        appdomain.Invoke(method, instance, paras);
+        public ILClassInstance CreateInstance(string typeFullName, params object[] args)
+        {
+            ILClassInstance ilInstance = null;
+            object instance = appdomain.Instantiate(typeFullName, args);
+
+            if (instance != null)
+            {
+                ilInstance = ReferencePool.Acquire<ILClassInstance>();
+
+                ilInstance.classInstance = instance;
+                ilInstance.type = appdomain.LoadedTypes[typeFullName];
+            }
+
+            return ilInstance;
+        }
+
+        public void ExecuteMethod(ILClassInstance classInstance, string methodName, int paramCount,
+            params object[] paras)
+        {
+            IMethod method = classInstance.type.GetMethod(methodName, paramCount);
+            appdomain.Invoke(method, classInstance.classInstance, paras);
+        }
     }
 }
