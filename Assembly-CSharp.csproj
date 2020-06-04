@@ -145,6 +145,8 @@
     <Compile Include="Assets\GameMain\Scripts\Scene\HideByBoundary.cs" />
     <Compile Include="Assets\GameMain\Scripts\Scene\ScrollableBackground.cs" />
     <Compile Include="Assets\GameMain\Scripts\Sound\SoundExtension.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Timer\TimerComponent.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Timer\TimerInfo.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\DialogForm.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\DialogParams.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\HotFixUGuiForm.cs" />

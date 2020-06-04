@@ -31,6 +31,15 @@ namespace Dango
         }
         
         /// <summary>
+        /// 获取数据模型组件。
+        /// </summary>
+        public static TimerComponent Timer
+        {
+            get;
+            private set;
+        }
+        
+        /// <summary>
         /// 获取ILRuntime组件。
         /// </summary>
         public static ILRuntimeComponent ILRuntime
@@ -43,6 +52,7 @@ namespace Dango
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
             DataModel = UnityGameFramework.Runtime.GameEntry.GetComponent<DataModelComponent>();
+            Timer = UnityGameFramework.Runtime.GameEntry.GetComponent<TimerComponent>();
             ILRuntime = UnityGameFramework.Runtime.GameEntry.GetComponent<ILRuntimeComponent>();
         }
     }
