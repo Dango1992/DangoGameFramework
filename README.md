@@ -11,4 +11,4 @@ E大的UnityGameFramework地址：https://github.com/EllanJiang/UnityGameFramewo
 5.添加定时器组件   
 6.添加ILRuntime支持(未完成，还在缓慢更新中...)    
 7.添加历史记录栈	  
-8.添加动态图集方案，采用(https://github.com/villekoskelaorg/RectanglePacking)项目算法    
+8.添加动态图集方案，采用[villekoskelaorg/RectanglePacking](https://github.com/villekoskelaorg/RectanglePacking)项目算法
